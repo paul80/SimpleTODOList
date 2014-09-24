@@ -29,11 +29,16 @@ public final class R {
         public static final int AddItemTextBox=0x7f080001;
         public static final int ArchiveListView=0x7f080004;
         public static final int ArchiveTextView=0x7f080003;
-        public static final int GoToArchiveItem=0x7f080007;
-        public static final int GoToSummaryItem=0x7f080008;
+        public static final int ArchivedCheckedTextView=0x7f080009;
+        public static final int ArchivedItemsTextView=0x7f080008;
+        public static final int ArchivedUncheckedTextView=0x7f08000a;
+        public static final int GoToArchiveItem=0x7f08000c;
+        public static final int GoToSummaryItem=0x7f08000d;
         public static final int ItemListView=0x7f080002;
         public static final int SummaryTextView=0x7f080005;
-        public static final int action_settings=0x7f080006;
+        public static final int TodoCheckedTextView=0x7f080006;
+        public static final int TodoUncheckedTextView=0x7f080007;
+        public static final int action_settings=0x7f08000b;
     }
     public static final class layout {
         public static final int activity_archive_list=0x7f030000;

@@ -72,4 +72,9 @@ public class ArchiveList {
 		
 	}
 
+	public Item get(int i) {
+		// TODO Auto-generated method stub
+		return archiveList.get(i);
+	}
+
 }

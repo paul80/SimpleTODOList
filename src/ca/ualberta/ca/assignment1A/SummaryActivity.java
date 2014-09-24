@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class SummaryActivity extends Activity {
 
@@ -11,6 +12,62 @@ public class SummaryActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.summary);
+		
+		//Adding items here
+		TextView textViewA= (TextView) findViewById(R.id.TodoCheckedTextView);
+		TextView textViewB= (TextView) findViewById(R.id.TodoUncheckedTextView);
+		TextView textViewC= (TextView) findViewById(R.id.ArchivedItemsTextView);
+		TextView textViewD= (TextView) findViewById(R.id.ArchivedCheckedTextView);
+		TextView textViewE= (TextView) findViewById(R.id.ArchivedUncheckedTextView);
+		
+		int list_size= ItemListController.getItemList().size(); //Get item list size
+		int archive_size=ArchiveListController.getArchiveList().size(); //Archive size
+		int TodoChecked=0;
+		int TodoUnchecked=0;
+		int ArchiveChecked=0;
+		int ArchiveUnchecked=0;
+		//Get # of checked/unchecked items
+		for(int i=0; i<list_size; i++) {
+			Item item= ItemListController.getItemList().get(i); // Item in the list
+			String item_name= item.getName();
+			int length= item_name.length();
+			length=length-2;
+			char character= item_name.charAt(length);
+			if (character==' ') {
+				TodoUnchecked+=1;
+			}
+			else {
+				TodoChecked+=1;
+			}
+		}
+		
+		for (int i=0; i<archive_size; i++) {
+			Item item= ArchiveListController.getArchiveList().get(i);
+			String item_name= item.getName();
+			int length= item_name.length();
+			length=length-2;
+			char character= item_name.charAt(length);
+			if (character==' '){
+				ArchiveUnchecked+=1;
+			}
+			else {
+				ArchiveChecked+=1;
+			}
+		}
+		
+		//Now have two for loops to calculate the checked and unchecked items
+		//Now have 5 strings for display 
+		String TodoCheck= String.valueOf(TodoChecked)+ " TODO items checked";
+		String TodoUncheck= String.valueOf(TodoUnchecked) + " TODO items unchecked";
+		String ArchiveCheck= String.valueOf(ArchiveChecked) + " archive items checked";
+		String ArchiveUncheck= String.valueOf(ArchiveUnchecked) + " archive items unchecked";
+		String ArchiveAmount= String.valueOf(archive_size) + " items in archive";
+		
+		textViewA.setText(TodoCheck);
+		textViewB.setText(TodoUncheck);// Was here
+		textViewC.setText(ArchiveAmount);
+		textViewD.setText(ArchiveCheck);
+		textViewE.setText(ArchiveUncheck);
 	}
 
 	@Override

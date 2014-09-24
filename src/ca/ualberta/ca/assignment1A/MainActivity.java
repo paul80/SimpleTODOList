@@ -63,6 +63,7 @@ public class MainActivity extends Activity {
 				length=length-2;
 				
 				char character= s.charAt(length);
+				//Since character is a char, it is a primitve and can be compared using ==
 				if (character==' ') {
 					String notify="Not checked";
 					Toast.makeText(getBaseContext(), notify,Toast.LENGTH_SHORT).show();
