@@ -19,21 +19,18 @@ import android.widget.AdapterView.OnItemLongClickListener;
 
 public class ArchiveListActivity extends Activity {
 	
-	Item count;  //Added in
+	Item count;  
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.archive_list);
 		
-        //Trial code
+        //Obtain TODO and archive lists
         ItemListManager.initManager(this.getApplicationContext());
         ArchiveListManager.initManager2(this.getApplicationContext());
 
-        //
-		
-		//--------------------------New items here
-		
+ 
 		ListView archive_listView= (ListView) findViewById(R.id.ArchiveListView);
         Collection<Item> archive_items= ArchiveListController.getArchiveList().getArchiveItems();
         final ArrayList <Item> archive_list= new ArrayList <Item>(archive_items);
@@ -41,7 +38,7 @@ public class ArchiveListActivity extends Activity {
         archive_listView.setAdapter(ArchiveAdapter);
         
         
-                //Change observer to update item list is here
+       //Change observer to update archive list
         ArchiveListController.getArchiveList().addListener(new Listener() {
         	@Override
         	public void update() {
@@ -52,31 +49,31 @@ public class ArchiveListActivity extends Activity {
         	}
         });
         
-        //------------------------End new stuff here, it works. New test below-----------------------------//
         
         
         
-                 //Trial code for setOnItemClickListener
+        
+                 //On a click in the archive listview, can check and uncheck items done
         
         archive_listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				// TODO Auto-generated method stub
 				count=archive_list.get(position);
 				String s= count.getName();
 				Toast.makeText(getBaseContext(), s, Toast.LENGTH_SHORT).show();
 				
-				//OK UP to here
+				
 				int length= s.length();
 				length=length-2;
 				
 				char character= s.charAt(length);
 				if (character==' ') {
-					String notify="Not checked";
-					Toast.makeText(getBaseContext(), notify,Toast.LENGTH_SHORT).show();
-					//Here works
+					
+					//String notify="Not checked";
+					//Toast.makeText(getBaseContext(), notify,Toast.LENGTH_SHORT).show();
+					
 					s= s.substring(0,length-1)+"[x]";
 					count=new Item(s);
 					ArchiveListController.getArchiveList().set(position, count);
@@ -84,8 +81,8 @@ public class ArchiveListActivity extends Activity {
 				}
 				
 				else {
-					String notify="Checked";
-					Toast.makeText(getBaseContext(), notify, Toast.LENGTH_SHORT).show();
+					//String notify="Checked";
+					//Toast.makeText(getBaseContext(), notify, Toast.LENGTH_SHORT).show();
 					s=s.substring(0,length-1)+ "[ ]";
 					count= new Item(s);
 					ArchiveListController.getArchiveList().set(position,count);
@@ -97,16 +94,16 @@ public class ArchiveListActivity extends Activity {
         
 		});
          
+        
+        //On a long click in the archive list view, bring up a context/ floating menu
+        
         archive_listView.setOnItemLongClickListener(new OnItemLongClickListener() {
         	@Override
 			public boolean onItemLongClick(AdapterView<?> adapterView, View view,
 					int position, long id) {
-				//Toast.makeText(MainActivity.this,
-				//		"Delete"+list.get(position).toString(),
-				//		Toast.LENGTH_SHORT).show();
-				
+        		
+
 					count= archive_list.get(position);
-				//ArchiveListController.getArchiveList().remove(item);
 				return false;
 			}
 		});
@@ -116,7 +113,7 @@ public class ArchiveListActivity extends Activity {
         registerForContextMenu(archive_listView);
 	}
 	
-    //Trial code here, to create a context menu, works, yay!
+    //Create a context menu where the options are delete items and unarchive items
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenuInfo menuInfo) {
@@ -127,12 +124,12 @@ public class ArchiveListActivity extends Activity {
     }
         
         
-        //-----------------End new test here.Code works-----------------------------------//
         
         
         
         
-             //New trial here
+    // If delete item selected, delete the item from listview
+    // If unarchive selected, remove the item from listview and add it to the TODO list view
     @Override
     public boolean onContextItemSelected(MenuItem item){    
     	if(item.getTitle()=="Delete item"){  
@@ -151,8 +148,7 @@ public class ArchiveListActivity extends Activity {
     	}
     	return true;
     }
-
-         
+ 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

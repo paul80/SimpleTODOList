@@ -2,6 +2,8 @@ package ca.ualberta.ca.assignment1A;
 
 import java.io.IOException;
 
+
+//Controller to control data flow for the archive list between views
 //Singleton
 public class ArchiveListController {
 	private static ArchiveList archiveList= null;

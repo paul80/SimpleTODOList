@@ -4,12 +4,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
+//Archive list
 public class ArchiveList implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -4837734984531825124L;
 	protected  ArrayList <Item> archiveList= null;
+	
+	//Do not serialize arraylist of listeners
 	protected  transient ArrayList<Listener> listeners=null;
 	
 	public ArchiveList() {
@@ -62,7 +65,6 @@ public class ArchiveList implements Serializable {
 	}
 	
 	public Collection<Item> getArchiveItems() {
-		// TODO Auto-generated method stub
 		return archiveList;
 	}
 	

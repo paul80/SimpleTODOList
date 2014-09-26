@@ -13,26 +13,31 @@ public class SummaryActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.summary);
 		
-        //Trial code
+        //Get both the todo list and the archive list from memory
         ItemListManager.initManager(this.getApplicationContext());
         ArchiveListManager.initManager2(this.getApplicationContext());
 
         //
 		
-		//Adding items here
+		//Get the five textviews for summarizing data
 		TextView textViewA= (TextView) findViewById(R.id.TodoCheckedTextView);
 		TextView textViewB= (TextView) findViewById(R.id.TodoUncheckedTextView);
 		TextView textViewC= (TextView) findViewById(R.id.ArchivedItemsTextView);
 		TextView textViewD= (TextView) findViewById(R.id.ArchivedCheckedTextView);
 		TextView textViewE= (TextView) findViewById(R.id.ArchivedUncheckedTextView);
 		
-		int list_size= ItemListController.getItemList().size(); //Get item list size
-		int archive_size=ArchiveListController.getArchiveList().size(); //Archive size
+		
+		//Get item list and archive list sizes
+		int list_size= ItemListController.getItemList().size(); 
+		int archive_size=ArchiveListController.getArchiveList().size(); 
+		
+		
 		int TodoChecked=0;
 		int TodoUnchecked=0;
 		int ArchiveChecked=0;
 		int ArchiveUnchecked=0;
-		//Get # of checked/unchecked items
+		
+		//Get # of checked/unchecked items in both todo list and archive list
 		for(int i=0; i<list_size; i++) {
 			Item item= ItemListController.getItemList().get(i); // Item in the list
 			String item_name= item.getName();
@@ -69,8 +74,9 @@ public class SummaryActivity extends Activity {
 		String ArchiveUncheck= String.valueOf(ArchiveUnchecked) + " archive items unchecked";
 		String ArchiveAmount= String.valueOf(archive_size) + " items in archive";
 		
+		//Change the texts in the textviews to reflect summary stats
 		textViewA.setText(TodoCheck);
-		textViewB.setText(TodoUncheck);// Was here
+		textViewB.setText(TodoUncheck);
 		textViewC.setText(ArchiveAmount);
 		textViewD.setText(ArchiveCheck);
 		textViewE.setText(ArchiveUncheck);

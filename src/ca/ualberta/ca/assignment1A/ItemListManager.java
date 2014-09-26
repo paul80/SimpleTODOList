@@ -11,6 +11,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Base64;
 
+
+
+//ItemListManager controls the serialization/deserialization of the TODO list
 public class ItemListManager {
 	
 	static final String prefile= "ItemList";

@@ -11,6 +11,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Base64;
 
+
+//ArchiveListManager controls the serialization/deserialization of the archive_list
 public class ArchiveListManager {
 	static final String prefile2= "ArchiveList";
 	static final String archive_key= "archiveList";
