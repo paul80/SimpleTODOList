@@ -1,15 +1,27 @@
 package ca.ualberta.ca.assignment1A;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ArchiveList {
-	protected  ArrayList <Item> archiveList;
-	protected ArrayList<Listener> listeners;
+public class ArchiveList implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4837734984531825124L;
+	protected  ArrayList <Item> archiveList= null;
+	protected  transient ArrayList<Listener> listeners=null;
 	
 	public ArchiveList() {
 		archiveList= new ArrayList <Item> ();
 		listeners= new ArrayList <Listener>();
+	}
+	
+	private ArrayList <Listener>getListeners() {
+		if(listeners==null){
+			listeners= new ArrayList<Listener>();
+		}
+		return listeners;
 	}
 
 	public void add(Item testItem) {
@@ -18,7 +30,7 @@ public class ArchiveList {
 	}
 
 	private void notifyListeners() {
-		for (Listener listener : listeners) {
+		for (Listener listener : getListeners()) {
 			listener.update();
 		}
 	}
@@ -28,7 +40,6 @@ public class ArchiveList {
 	}
 
 	public boolean contains(Item testItem) {
-		// TODO Auto-generated method stub
 		return archiveList.contains(testItem);
 	}
 
@@ -56,24 +67,22 @@ public class ArchiveList {
 	}
 	
 	public void addListener(Listener l) {
-		listeners.add(l);
+		getListeners().add(l);
 		
 	}
 
 	public void removeListener(Listener l) {
-		listeners.remove(l);
+		getListeners().remove(l);
 		
 	}
 
 	public void set(int index, Item item) {
-		// TODO Auto-generated method stub
 		archiveList.set(index, item);
 		notifyListeners();
 		
 	}
 
 	public Item get(int i) {
-		// TODO Auto-generated method stub
 		return archiveList.get(i);
 	}
 

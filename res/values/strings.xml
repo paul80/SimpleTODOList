@@ -6,5 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_archive_list">Archive List</string>
     <string name="title_activity_summary">SummaryActivity</string>
+    <string name="title_activity_email">EmailActivity</string>
+    <string name="title_activity_email_some_todo">EmailSomeTodoActivity</string>
 
 </resources>

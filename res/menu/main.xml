@@ -9,5 +9,6 @@
         android:title="@string/action_settings"/>
     <item android:id="@+id/GoToArchiveItem" android:title="Go to archive" android:onClick="goToArchive"></item>
     <item android:id="@+id/GoToSummaryItem" android:title="Go to summary" android:onClick="goToSummary"></item>
+    <item android:id="@+id/GoToEmailItem" android:title="Go to email" android:onClick="goToEmail"></item>
 
 </menu>

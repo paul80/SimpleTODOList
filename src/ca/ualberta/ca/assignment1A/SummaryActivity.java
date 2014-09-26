@@ -13,6 +13,12 @@ public class SummaryActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.summary);
 		
+        //Trial code
+        ItemListManager.initManager(this.getApplicationContext());
+        ArchiveListManager.initManager2(this.getApplicationContext());
+
+        //
+		
 		//Adding items here
 		TextView textViewA= (TextView) findViewById(R.id.TodoCheckedTextView);
 		TextView textViewB= (TextView) findViewById(R.id.TodoUncheckedTextView);

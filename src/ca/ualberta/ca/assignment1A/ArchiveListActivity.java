@@ -26,6 +26,12 @@ public class ArchiveListActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.archive_list);
 		
+        //Trial code
+        ItemListManager.initManager(this.getApplicationContext());
+        ArchiveListManager.initManager2(this.getApplicationContext());
+
+        //
+		
 		//--------------------------New items here
 		
 		ListView archive_listView= (ListView) findViewById(R.id.ArchiveListView);

@@ -28,7 +28,12 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //New stuff here
+        
+        //Trial code
+        ItemListManager.initManager(this.getApplicationContext());
+        ArchiveListManager.initManager2(this.getApplicationContext());
+
+        //
         ListView listView= (ListView) findViewById(R.id.ItemListView);
         Collection<Item> items= ItemListController.getItemList().getItems();
         final ArrayList <Item> list= new ArrayList <Item>(items);
@@ -53,7 +58,6 @@ public class MainActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				// TODO Auto-generated method stub
 				count=list.get(position);
 				String s= count.getName();
 				Toast.makeText(getBaseContext(), s, Toast.LENGTH_SHORT).show();
@@ -152,21 +156,6 @@ public class MainActivity extends Activity {
             //  ******New test section here, works!
             ItemListController.getItemList().remove(count); 
             
-            //New items set On item Long Click deletes items but want a Context menu
-            //listView.setOnItemLongClickListener(new OnItemLongClickListener() {
-
-    			//@Override
-    			//public boolean onItemLongClick(AdapterView<?> adapterView, View view,
-    					//int position, long id) {
-    				//Toast.makeText(MainActivity.this,
-    						//"Delete"+list.get(position).toString(),
-    						//Toast.LENGTH_SHORT).show();
-    				//Item item= list.get(position);
-    				//ItemListController.getItemList().remove(item);
-    				//return false;
-    			//}
-    		//});
-    		//
         }    
     	else if(item.getTitle()=="Archive item"){  
             Toast.makeText(getApplicationContext(),"Archiving item",Toast.LENGTH_SHORT).show();
@@ -211,7 +200,12 @@ public class MainActivity extends Activity {
     	startActivity(intent);
     }
     
-    //New stuff here
+    public void goToEmail(MenuItem menu) {
+    	Toast.makeText(this, "Go to email", Toast.LENGTH_SHORT).show();
+    	Intent intent= new Intent(MainActivity.this,EmailActivity.class);
+    	startActivity(intent);
+    }
+    
     public void AddItemAction(View v) {
     	Toast.makeText(this,"Adding a item", Toast.LENGTH_SHORT).show();
     	ItemListController st= new ItemListController();
