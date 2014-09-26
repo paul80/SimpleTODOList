@@ -10,7 +10,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:text="Large Text"
+        android:text="Select items to email"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ListView

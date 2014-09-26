@@ -87,26 +87,6 @@ public class MainActivity extends Activity {
 				}
 				
 				ItemAdapter.notifyDataSetChanged();
-		
-				
-				//count is a item aka a string
-				//length= count.count();
-				//length=length-2;  // Get the stuff inside [ ]
-				
-				//char character= count.charAt(length);
-				
-				/*if (character==' ') {
-					String newCount= count+"[X]";
-					Item newItem= new Item(newCount);
-					ItemListController.getItemList().set(position, newItem);
-					ItemAdapter.notifyDataSetChanged();
-				}
-				else{
-					String newCount=count+"[ ]";
-					Item newItem= new Item(newCount);
-					ItemListController.getItemList().set(position, newItem);
-					ItemAdapter.notifyDataSetChanged();*/
-				//}
 				
 			}
         
@@ -147,7 +127,6 @@ public class MainActivity extends Activity {
         menu.add(0,v.getId(),0, "Archive item");
     }
 
-    //New trial here, it works, yay!
     @Override
     public boolean onContextItemSelected(MenuItem item){    
     	if(item.getTitle()=="Delete item"){  

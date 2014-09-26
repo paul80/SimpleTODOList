@@ -30,11 +30,6 @@ public class EmailActivity extends Activity {
 		ItemListManager.initManager(this.getApplicationContext());
         ArchiveListManager.initManager2(this.getApplicationContext());
 		
-        ListView listView= (ListView) findViewById(R.id.EmailSomeTodoListView);
-        Collection<Item> items= ItemListController.getItemList().getItems();
-        final ArrayList <Item> list= new ArrayList <Item>(items);
-        final ArrayAdapter<Item> ItemAdapter= new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1, list);
-        listView.setAdapter(ItemAdapter);
 		
 		Button emailAllTodo= (Button) findViewById(R.id.EmailTodoButton);
 		Button emailAll= (Button) findViewById(R.id.EmailAllButton);
@@ -107,18 +102,13 @@ public class EmailActivity extends Activity {
 			}
 		});
 		
+		
 		emailSomeTodo.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				
-				//Toast.makeText(EmailActivity.this, "Emailing some TODO items", Toast.LENGTH_SHORT).show();
-				//String s3="";
-				//int item_list_size= ItemListController.getItemList().size();
-				//if (list.size()>0) {
-					//Test code here
-					
-				//}
+				Intent intent= new Intent(EmailActivity.this,EmailSomeTodoActivity.class);
+				startActivity(intent);
 				
 			}
 		});
