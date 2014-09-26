@@ -17,10 +17,6 @@ import android.widget.Toast;
 
 public class EmailActivity extends Activity {
 	
-	//ArrayList <Item> emailItems= new ArrayList<Item>(); 
-	
-	//Initialize 4 buttons for email
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
         
@@ -30,7 +26,7 @@ public class EmailActivity extends Activity {
 		ItemListManager.initManager(this.getApplicationContext());
         ArchiveListManager.initManager2(this.getApplicationContext());
 		
-		
+      //Initialize 4 buttons for email
 		Button emailAllTodo= (Button) findViewById(R.id.EmailTodoButton);
 		Button emailAll= (Button) findViewById(R.id.EmailAllButton);
 		Button emailSomeTodo= (Button) findViewById(R.id.EmailSomeTodoButton);
@@ -112,7 +108,6 @@ public class EmailActivity extends Activity {
 				
 			}
 		});
-		
 		
 	}
 

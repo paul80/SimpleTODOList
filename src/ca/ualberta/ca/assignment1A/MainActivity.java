@@ -1,3 +1,38 @@
+//GNU licences below
+
+
+/*
+ 
+ATODOList:Records items to be done by the user
+Copyright (C) 2014 Paul Nhan pnhan@ualberta.ca
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+*/
+
+/*
+Student Picker: Randomly pick students to answer questions
+Copyright (C) 2014 Abram Hindle abram.hindle@softwareprocess.ca
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+*/
+
 package ca.ualberta.ca.assignment1A;
 
 import java.util.ArrayList;
@@ -29,18 +64,18 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        //Trial code
+        //Load and save TODO and archive lists from memory
         ItemListManager.initManager(this.getApplicationContext());
         ArchiveListManager.initManager2(this.getApplicationContext());
 
-        //
+        
         ListView listView= (ListView) findViewById(R.id.ItemListView);
         Collection<Item> items= ItemListController.getItemList().getItems();
         final ArrayList <Item> list= new ArrayList <Item>(items);
         final ArrayAdapter<Item> ItemAdapter= new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1, list);
         listView.setAdapter(ItemAdapter);
         
-        //Change observer to update item list is here
+        //Change observer to update TODO list
         ItemListController.getItemList().addListener(new Listener() {
         	@Override
         	public void update() {
@@ -51,7 +86,6 @@ public class MainActivity extends Activity {
         	}
         });
         
-        //Trial code for setOnItemClickListener
         
         listView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -62,7 +96,6 @@ public class MainActivity extends Activity {
 				String s= count.getName();
 				Toast.makeText(getBaseContext(), s, Toast.LENGTH_SHORT).show();
 				
-				//OK UP to here
 				int length= s.length();
 				length=length-2;
 				
@@ -71,7 +104,6 @@ public class MainActivity extends Activity {
 				if (character==' ') {
 					String notify="Not checked";
 					Toast.makeText(getBaseContext(), notify,Toast.LENGTH_SHORT).show();
-					//Here works
 					s= s.substring(0,length-1)+"[x]";
 					count=new Item(s);
 					ItemListController.getItemList().set(position, count);
@@ -92,17 +124,11 @@ public class MainActivity extends Activity {
         
 		});
         
-        
-        //Trial code for setOnItemClickListener ends here
-        //New items set On item Long Click deletes items but want a Context menu
         listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			@Override
 			public boolean onItemLongClick(AdapterView<?> adapterView, View view,
 					int position, long id) {
-				//Toast.makeText(MainActivity.this,
-				//		"Delete"+list.get(position).toString(),
-				//		Toast.LENGTH_SHORT).show();
 				
 					count= list.get(position);
 				//ItemListController.getItemList().remove(item);
@@ -113,7 +139,6 @@ public class MainActivity extends Activity {
         
         // Passing listView to ContextMenu for onCreateContextMenu
         registerForContextMenu(listView);
-        //Test here
         
     }
     
@@ -128,11 +153,11 @@ public class MainActivity extends Activity {
     }
 
     @Override
+    //Create a floating context menu upon longclicking an item in the list view
     public boolean onContextItemSelected(MenuItem item){    
     	if(item.getTitle()=="Delete item"){  
             Toast.makeText(getApplicationContext(),"Deleting item",Toast.LENGTH_SHORT).show();
             
-            //  ******New test section here, works!
             ItemListController.getItemList().remove(count); 
             
         }    
@@ -148,7 +173,6 @@ public class MainActivity extends Activity {
     }
 
     
-    //Trial code ends here
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -168,6 +192,7 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
     
+    // The below 3 functions go to different views when a button is pressed
     public void goToArchive(MenuItem menu) {
     	Toast.makeText(this,"Go to archive", Toast.LENGTH_SHORT).show();
     	Intent intent= new Intent(MainActivity.this, ArchiveListActivity.class);
@@ -185,6 +210,8 @@ public class MainActivity extends Activity {
     	startActivity(intent);
     }
     
+    
+    //Used to add an item to the TODO list view
     public void AddItemAction(View v) {
     	Toast.makeText(this,"Adding a item", Toast.LENGTH_SHORT).show();
     	ItemListController st= new ItemListController();
