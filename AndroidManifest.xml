@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="ca.ualberta.ca.assignment1A.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,20 +23,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ArchiveListActivity"
+            android:name="ca.ualberta.ca.assignment1A.ArchiveListActivity"
             android:label="@string/title_activity_archive_list" >
         </activity>
         <activity
-            android:name=".SummaryActivity"
+            android:name="ca.ualberta.ca.assignment1A.SummaryActivity"
             android:label="@string/title_activity_summary" >
         </activity>
         <activity
-            android:name=".EmailActivity"
+            android:name="ca.ualberta.ca.assignment1A.EmailActivity"
             android:label="@string/title_activity_email" >
         </activity>
         <activity
-            android:name=".EmailSomeTodoActivity"
+            android:name="ca.ualberta.ca.assignment1A.EmailSomeTodoActivity"
             android:label="@string/title_activity_email_some_todo" >
+        </activity>
+        <activity
+            android:name="ca.ualberta.ca.assignment1A.EmailSomeArchiveActivity"
+            android:label="@string/title_activity_email_some_archive" >
         </activity>
     </application>
 

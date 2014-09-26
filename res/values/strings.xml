@@ -8,5 +8,6 @@
     <string name="title_activity_summary">SummaryActivity</string>
     <string name="title_activity_email">EmailActivity</string>
     <string name="title_activity_email_some_todo">EmailSomeTodoActivity</string>
+    <string name="title_activity_email_some_archive">EmailSomeArchiveActivity</string>
 
 </resources>

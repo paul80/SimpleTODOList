@@ -94,16 +94,31 @@ public class MainActivity extends Activity {
 					int position, long id) {
 				count=list.get(position);
 				String s= count.getName();
-				Toast.makeText(getBaseContext(), s, Toast.LENGTH_SHORT).show();
+				
+				//Toast.makeText(getBaseContext(), s, Toast.LENGTH_SHORT).show();
 				
 				int length= s.length();
 				length=length-2;
 				
+				//Commented out block isn't working, test later
+/*				if (s.length()>=3) {
+					String test= s.substring(0,3);
+					String testA="[ ]";
+		        	String testB="[+]";
+					if (test.equals(testA) ||test.equals(testB)){
+						s=s.substring(3);
+						count=new Item(s);
+						ItemListController.getItemList().set(position,count);
+						ItemAdapter.notifyDataSetChanged();
+
+					}
+				}*/
+				
 				char character= s.charAt(length);
 				//Since character is a char, it is a primitve and can be compared using ==
 				if (character==' ') {
-					String notify="Not checked";
-					Toast.makeText(getBaseContext(), notify,Toast.LENGTH_SHORT).show();
+					//String notify="Not checked";
+					//Toast.makeText(getBaseContext(), notify,Toast.LENGTH_SHORT).show();
 					s= s.substring(0,length-1)+"[x]";
 					count=new Item(s);
 					ItemListController.getItemList().set(position, count);
@@ -111,8 +126,8 @@ public class MainActivity extends Activity {
 				}
 				
 				else {
-					String notify="Checked";
-					Toast.makeText(getBaseContext(), notify, Toast.LENGTH_SHORT).show();
+					//String notify="Checked";
+					//Toast.makeText(getBaseContext(), notify, Toast.LENGTH_SHORT).show();
 					s=s.substring(0,length-1)+ "[ ]";
 					count= new Item(s);
 					ItemListController.getItemList().set(position,count);

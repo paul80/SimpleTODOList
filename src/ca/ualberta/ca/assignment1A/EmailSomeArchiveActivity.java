@@ -3,35 +3,35 @@ package ca.ualberta.ca.assignment1A;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.app.Activity;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class EmailSomeTodoActivity extends Activity {
-
+public class EmailSomeArchiveActivity extends Activity
+{
 	Item count;
-	
-	//Have an arraylist to store items to be emailed
 	ArrayList <String> emailItems= new ArrayList<String>();
 	
+
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.some_todo_email);
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		
-        ItemListManager.initManager(this.getApplicationContext());
+
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.some_archive_email);
+		
+		ItemListManager.initManager(this.getApplicationContext());
         ArchiveListManager.initManager2(this.getApplicationContext());
        
         
-        ListView listView= (ListView) findViewById(R.id.EmailSomeTodoListView);
-        Collection<Item> items= ItemListController.getItemList().getItems();
+        ListView listView= (ListView) findViewById(R.id.SomeEmailArchiveListView);
+        Collection<Item> items= ArchiveListController.getArchiveList().getArchiveItems();
         ArrayList <Item> before= new ArrayList<Item> (items);
         
         //Change the todo list by adding [] in front to indicate to the user whether they have clicked it or not
@@ -53,11 +53,11 @@ public class EmailSomeTodoActivity extends Activity {
         final ArrayAdapter<Item> ItemAdapter= new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1, list);
         listView.setAdapter(ItemAdapter);
         
-        ItemListController.getItemList().addListener(new Listener() {
+        ArchiveListController.getArchiveList().addListener(new Listener() {
         	@Override
         	public void update() {
         		list.clear();
-        		Collection<Item> items= ItemListController.getItemList().getItems();
+        		Collection<Item> items= ArchiveListController.getArchiveList().getArchiveItems();
         		list.addAll(items);
         		ItemAdapter.notifyDataSetChanged();
         	}
@@ -70,33 +70,27 @@ public class EmailSomeTodoActivity extends Activity {
 					int position, long id) {
 				count=list.get(position);
 				String s= count.getName();
-				Toast.makeText(getBaseContext(), s, Toast.LENGTH_SHORT).show();
-				
-				//
-				
 				char character= s.charAt(1);
-				//Since character is a char, it is a primitve and can be compared using ==
+				//Since character is a char, it is a primitive and can be compared using ==
 				if (character==' ') {
-					String notify="Not checked";
-					Toast.makeText(getBaseContext(), notify,Toast.LENGTH_SHORT).show();
+					
+					//String notify="Not checked";
+					//Toast.makeText(getBaseContext(), notify,Toast.LENGTH_SHORT).show();
 					
 					//Check off that the item has been clicked and will be emailed
 					//emailItems.add(s.substring(3));
 					s= "[+]"+s.substring(3);
 					count=new Item(s);
-					ItemListController.getItemList().set(position, count);
-					//ItemAdapter.notifyDataSetChanged()
-					//emailItems.add(s);
+					ArchiveListController.getArchiveList().set(position, count);
+					//ItemAdapter.notifyDataSetChanged();
 				}
 				
 				else {
-					String notify="Checked";
-					Toast.makeText(getBaseContext(), notify, Toast.LENGTH_SHORT).show();
-					//emailItems.remove(s.substring(3));
+					//String notify="Checked";
+					//Toast.makeText(getBaseContext(), notify, Toast.LENGTH_SHORT).show();
 					s="[ ]"+s.substring(3);
 					count= new Item(s);
-					ItemListController.getItemList().set(position,count);
-					//emailItems.remove(s);
+					ArchiveListController.getArchiveList().set(position,count);
 				}
 				
 				ItemAdapter.notifyDataSetChanged();
@@ -104,24 +98,16 @@ public class EmailSomeTodoActivity extends Activity {
         
 		});
         
+        
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.some_todo_email, menu);
+		getMenuInflater().inflate(R.menu.email_some_archive, menu);
 		return true;
 	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
 }

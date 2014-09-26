@@ -17,6 +17,10 @@ public final class R {
          (such as screen margins) for screens with more than 820dp of available width. This
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
     
+
+         Customize dimensions originally defined in res/values/dimens.xml (such as
+         screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
+    
          */
         public static final int activity_horizontal_margin=0x7f040000;
         public static final int activity_vertical_margin=0x7f040001;
@@ -29,25 +33,28 @@ public final class R {
         public static final int AddItemTextBox=0x7f080001;
         public static final int ArchiveListView=0x7f080004;
         public static final int ArchiveTextView=0x7f080003;
-        public static final int ArchivedCheckedTextView=0x7f080012;
-        public static final int ArchivedItemsTextView=0x7f080010;
-        public static final int ArchivedUncheckedTextView=0x7f080011;
+        public static final int ArchivedCheckedTextView=0x7f080015;
+        public static final int ArchivedItemsTextView=0x7f080013;
+        public static final int ArchivedUncheckedTextView=0x7f080014;
         public static final int EmailAllButton=0x7f080009;
-        public static final int EmailSelectedTodoButton=0x7f08000c;
+        public static final int EmailSelectedTodoButton=0x7f08000f;
         public static final int EmailSomeArchiveButton=0x7f080008;
         public static final int EmailSomeTodoButton=0x7f080007;
-        public static final int EmailSomeTodoListView=0x7f08000b;
+        public static final int EmailSomeTodoListView=0x7f08000e;
         public static final int EmailTextView=0x7f080005;
         public static final int EmailTodoButton=0x7f080006;
-        public static final int GoToArchiveItem=0x7f080014;
-        public static final int GoToEmailItem=0x7f080016;
-        public static final int GoToSummaryItem=0x7f080015;
+        public static final int GoToArchiveItem=0x7f080017;
+        public static final int GoToEmailItem=0x7f080019;
+        public static final int GoToSummaryItem=0x7f080018;
         public static final int ItemListView=0x7f080002;
-        public static final int SomeTodoEmailTextView=0x7f08000a;
-        public static final int SummaryTextView=0x7f08000d;
-        public static final int TodoCheckedTextView=0x7f08000e;
-        public static final int TodoUncheckedTextView=0x7f08000f;
-        public static final int action_settings=0x7f080013;
+        public static final int SomeEmailArchiveButton=0x7f08000a;
+        public static final int SomeEmailArchiveListView=0x7f08000b;
+        public static final int SomeEmailArchiveTextView=0x7f08000c;
+        public static final int SomeTodoEmailTextView=0x7f08000d;
+        public static final int SummaryTextView=0x7f080010;
+        public static final int TodoCheckedTextView=0x7f080011;
+        public static final int TodoUncheckedTextView=0x7f080012;
+        public static final int action_settings=0x7f080016;
     }
     public static final class layout {
         public static final int activity_archive_list=0x7f030000;
@@ -57,16 +64,18 @@ public final class R {
         public static final int activity_summary=0x7f030004;
         public static final int archive_list=0x7f030005;
         public static final int email=0x7f030006;
-        public static final int some_todo_email=0x7f030007;
-        public static final int summary=0x7f030008;
+        public static final int some_archive_email=0x7f030007;
+        public static final int some_todo_email=0x7f030008;
+        public static final int summary=0x7f030009;
     }
     public static final class menu {
         public static final int archive_list=0x7f070000;
         public static final int email=0x7f070001;
-        public static final int email_some_todo=0x7f070002;
-        public static final int main=0x7f070003;
-        public static final int some_todo_email=0x7f070004;
-        public static final int summary=0x7f070005;
+        public static final int email_some_archive=0x7f070002;
+        public static final int email_some_todo=0x7f070003;
+        public static final int main=0x7f070004;
+        public static final int some_todo_email=0x7f070005;
+        public static final int summary=0x7f070006;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
@@ -74,6 +83,7 @@ public final class R {
         public static final int hello_world=0x7f050001;
         public static final int title_activity_archive_list=0x7f050003;
         public static final int title_activity_email=0x7f050005;
+        public static final int title_activity_email_some_archive=0x7f050007;
         public static final int title_activity_email_some_todo=0x7f050006;
         public static final int title_activity_summary=0x7f050004;
     }

@@ -30,6 +30,8 @@ public class EmailActivity extends Activity {
 		Button emailAllTodo= (Button) findViewById(R.id.EmailTodoButton);
 		Button emailAll= (Button) findViewById(R.id.EmailAllButton);
 		Button emailSomeTodo= (Button) findViewById(R.id.EmailSomeTodoButton);
+		Button emailSomeArchive= (Button) findViewById(R.id.EmailSomeArchiveButton);
+		
 		emailAllTodo.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -104,6 +106,17 @@ public class EmailActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent= new Intent(EmailActivity.this,EmailSomeTodoActivity.class);
+				startActivity(intent);
+				
+			}
+		});
+		
+		emailSomeArchive.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v)
+			{
+				Intent intent= new Intent(EmailActivity.this,EmailSomeArchiveActivity.class);
 				startActivity(intent);
 				
 			}
