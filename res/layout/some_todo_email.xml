@@ -17,10 +17,20 @@
         android:id="@+id/EmailSomeTodoListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/EmailSelectedTodoButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/SomeTodoEmailTextView" >
 
     </ListView>
+
+    <Button
+        android:id="@+id/EmailSelectedTodoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:text="Email" />
 
 </RelativeLayout>
