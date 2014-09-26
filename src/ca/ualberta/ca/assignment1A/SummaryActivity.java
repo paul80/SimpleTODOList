@@ -17,7 +17,6 @@ public class SummaryActivity extends Activity {
         ItemListManager.initManager(this.getApplicationContext());
         ArchiveListManager.initManager2(this.getApplicationContext());
 
-        //
 		
 		//Get the five textviews for summarizing data
 		TextView textViewA= (TextView) findViewById(R.id.TodoCheckedTextView);

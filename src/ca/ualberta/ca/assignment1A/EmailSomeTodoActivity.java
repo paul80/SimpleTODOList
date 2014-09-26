@@ -17,19 +17,24 @@ import android.widget.AdapterView.OnItemClickListener;
 public class EmailSomeTodoActivity extends Activity {
 
 	Item count;
+	
+	//Have an arraylist to store items to be emailed
+	ArrayList <String> emailItems= new ArrayList<String>();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.some_todo_email);
-		ItemListManager.initManager(this.getApplicationContext());
+		
+        ItemListManager.initManager(this.getApplicationContext());
         ArchiveListManager.initManager2(this.getApplicationContext());
-        
-        //
+       
         
         ListView listView= (ListView) findViewById(R.id.EmailSomeTodoListView);
         Collection<Item> items= ItemListController.getItemList().getItems();
         ArrayList <Item> before= new ArrayList<Item> (items);
-        //Change the todo list by adding [] in front
+        
+        //Change the todo list by adding [] in front to indicate to the user whether they have clicked it or not
         for (int i=0; i<items.size();i++) {
         	Item check=before.get(i);
         	String newcheck= check.getName();
@@ -74,7 +79,9 @@ public class EmailSomeTodoActivity extends Activity {
 				if (character==' ') {
 					String notify="Not checked";
 					Toast.makeText(getBaseContext(), notify,Toast.LENGTH_SHORT).show();
-					//Here works
+					
+					//Check off that the item has been clicked and will be emailed
+					//emailItems.add(s.substring(3));
 					s= "[+]"+s.substring(3);
 					count=new Item(s);
 					ItemListController.getItemList().set(position, count);
@@ -84,13 +91,13 @@ public class EmailSomeTodoActivity extends Activity {
 				else {
 					String notify="Checked";
 					Toast.makeText(getBaseContext(), notify, Toast.LENGTH_SHORT).show();
+					//emailItems.remove(s.substring(3));
 					s="[ ]"+s.substring(3);
 					count= new Item(s);
 					ItemListController.getItemList().set(position,count);
 				}
 				
 				ItemAdapter.notifyDataSetChanged();
-				
 			}
         
 		});
