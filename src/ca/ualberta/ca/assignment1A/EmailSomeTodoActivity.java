@@ -28,6 +28,8 @@ public class EmailSomeTodoActivity extends Activity {
 		
         ItemListManager.initManager(this.getApplicationContext());
         ArchiveListManager.initManager2(this.getApplicationContext());
+        
+        
        
         
         ListView listView= (ListView) findViewById(R.id.EmailSomeTodoListView);
@@ -104,6 +106,7 @@ public class EmailSomeTodoActivity extends Activity {
         
 		});
         
+       
 	}
 
 	@Override
@@ -124,4 +127,24 @@ public class EmailSomeTodoActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+/*    Button b = (Button) findViewById(R.id.EmailSomeTodoButton);
+
+    button.setOnClickListener(new OnClickListener()
+    {
+      public void onClick(View v)
+      {
+    	  int list_size= ItemListController.getItemList().size(); 
+    	  String s="";
+    	  for(int i=0; i<list_size; i++) {
+    		  Item item= ItemListController.getItemList().get(i); // Item in the list
+    		  String item_name= item.getName();
+    		  int length= 1;
+    		  char character= item_name.charAt(length);
+    		  if (character==' ') {
+    			  s=s+item_name+", ";
+    		  }
+    });*/
+	
+	
 }
