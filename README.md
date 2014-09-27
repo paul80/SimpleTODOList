@@ -7,3 +7,8 @@ An android app to put TODO items in, and the following features include: emailin
 
 https://github.com/abramhindle/student-picker
 
+-Other inspirations for app:
+http://stackoverflow.com/questions/8701634/send-email-intent
+http://www.compiletimeerror.com/2013/07/send-email-in-android-example.html#.VCT8_BZ0Zrs
+
+
