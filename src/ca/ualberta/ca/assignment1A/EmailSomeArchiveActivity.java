@@ -18,7 +18,7 @@ import android.widget.AdapterView.OnItemClickListener;
 public class EmailSomeArchiveActivity extends Activity
 {
 	Item checkItem;
-	
+	//Not sure why it isn't working.
 	//Have an arraylist to store items to be emailed, before arraylist was type string
 	ArrayList <String> aemailItems= new ArrayList<String>();
 	
