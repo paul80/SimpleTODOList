@@ -14,23 +14,14 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
-        android:id="@+id/EmailTodoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/EmailTextView"
-        android:layout_marginTop="52dp"
-        android:text="Email TODO items" />
-
-    <Button
         android:id="@+id/EmailSomeTodoButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/EmailTodoButton"
-        android:text="Email selected TODO items" />
+        android:layout_below="@+id/EmailTextView"
+        android:text="Email TODO items" 
+        android:layout_marginTop="25dp"/>
 
     <Button
         android:id="@+id/EmailSomeArchiveButton"
@@ -39,7 +30,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/EmailSomeTodoButton"
-        android:text="Email selected archive items" />
+        android:text="Email archive items" 
+        android:layout_marginTop="25dp"/>
 
     <Button
         android:id="@+id/EmailAllButton"
@@ -48,6 +40,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/EmailSomeArchiveButton"
-        android:text="Email all items" />
+        android:text="Email all items" 
+        android:layout_marginTop="25dp"/>
 
 </RelativeLayout>

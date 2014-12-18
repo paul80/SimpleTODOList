@@ -27,40 +27,40 @@ public class EmailActivity extends Activity {
         ArchiveListManager.initManager2(this.getApplicationContext());
 		
       //Initialize 4 buttons for email
-		Button emailAllTodo= (Button) findViewById(R.id.EmailTodoButton);
+		//Button emailAllTodo= (Button) findViewById(R.id.EmailTodoButton);
 		Button emailAll= (Button) findViewById(R.id.EmailAllButton);
 		Button emailSomeTodo= (Button) findViewById(R.id.EmailSomeTodoButton);
 		Button emailSomeArchive= (Button) findViewById(R.id.EmailSomeArchiveButton);
 		
-		emailAllTodo.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(EmailActivity.this, "Emailing TODO items", Toast.LENGTH_SHORT).show();
-				String s="";
-				int size=ItemListController.getItemList().size();
-				if(size>0) {
-					for (int i=0; i<size-1;i++){
-					//emailItems.add(ItemListController.getItemList().get(i));
-						s=s+ItemListController.getItemList().get(i) +", ";
-					}
-					s=s+ItemListController.getItemList().get(size-1);
-
-				}
-				//s=s+ItemListController.getItemList().get(size-1);
-				Intent emailTodoIntent = new Intent(Intent.ACTION_SEND);
-				
-				//Make sure only email clients are selected and body of text contains TODO items
-				emailTodoIntent.setType("message/rfc822");
-				emailTodoIntent.putExtra(Intent.EXTRA_TEXT,s);
-				try {
-				    startActivity(Intent.createChooser(emailTodoIntent, "Select your email client"));
-				} catch (android.content.ActivityNotFoundException ex) {
-				    Toast.makeText(EmailActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
-				}
-				
-			}
-		});
+//		emailAllTodo.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				Toast.makeText(EmailActivity.this, "Emailing TODO items", Toast.LENGTH_SHORT).show();
+//				String s="";
+//				int size=ItemListController.getItemList().size();
+//				if(size>0) {
+//					for (int i=0; i<size-1;i++){
+//					//emailItems.add(ItemListController.getItemList().get(i));
+//						s=s+ItemListController.getItemList().get(i) +", ";
+//					}
+//					s=s+ItemListController.getItemList().get(size-1);
+//
+//				}
+//				//s=s+ItemListController.getItemList().get(size-1);
+//				Intent emailTodoIntent = new Intent(Intent.ACTION_SEND);
+//				
+//				//Make sure only email clients are selected and body of text contains TODO items
+//				emailTodoIntent.setType("message/rfc822");
+//				emailTodoIntent.putExtra(Intent.EXTRA_TEXT,s);
+//				try {
+//				    startActivity(Intent.createChooser(emailTodoIntent, "Select your email client"));
+//				} catch (android.content.ActivityNotFoundException ex) {
+//				    Toast.makeText(EmailActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+//				}
+//				
+//			}
+//		});
 		
 		emailAll.setOnClickListener(new OnClickListener() {
 			
@@ -106,6 +106,7 @@ public class EmailActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent= new Intent(EmailActivity.this,EmailSomeTodoActivity.class);
+				intent.putExtra("listToUse", "to do");
 				startActivity(intent);
 				
 			}
@@ -116,7 +117,8 @@ public class EmailActivity extends Activity {
 			@Override
 			public void onClick(View v)
 			{
-				Intent intent= new Intent(EmailActivity.this,EmailSomeArchiveActivity.class);
+				Intent intent= new Intent(EmailActivity.this,EmailSomeTodoActivity.class);
+				intent.putExtra("listToUse", "archive");
 				startActivity(intent);
 				
 			}
@@ -137,9 +139,9 @@ public class EmailActivity extends Activity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
+//		if (id == R.id.action_settings) {
+//			return true;
+//		}
 		return super.onOptionsItemSelected(item);
 	}
 	

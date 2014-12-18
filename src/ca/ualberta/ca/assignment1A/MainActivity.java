@@ -46,10 +46,13 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -63,6 +66,10 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        //Stop autopopup of keyboard for Nexus 4 at least on 4.4.4
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN); 
+
         
         //Load and save TODO and archive lists from memory
         ItemListManager.initManager(this.getApplicationContext());
@@ -150,8 +157,46 @@ public class MainActivity extends Activity {
 				return false;
 			}
 		});
-		
         
+//        Button addButton= (Button) findViewById(R.id.AddItemButton);
+//        addButton.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//		    	Toast.makeText(MainActivity.this,"Adding a item", Toast.LENGTH_SHORT).show();
+//		    	ItemListController st= new ItemListController();
+//		    	EditText textView= (EditText) findViewById(R.id.AddItemTextBox);
+//		    	st.add(new Item(textView.getText().toString()+ "[ ]"));
+//				
+//			}
+//		});
+        
+        
+        Button addButton= (Button)findViewById(R.id.AddItemButton);
+
+        addButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+		    	//Toast.makeText(MainActivity.this,"Adding a item", Toast.LENGTH_SHORT).show();
+		    	ItemListController st= new ItemListController();
+		    	EditText textView= (EditText) findViewById(R.id.AddItemTextBox);
+		    	String itemText=textView.getText().toString().trim();
+		    	if (itemText.equals("")) {
+		    		Toast.makeText(MainActivity.this, "Item is whitespace, can't be added", Toast.LENGTH_SHORT).show();
+		    		//Clear the editText after adding
+		    		textView.getText().clear();
+		    	}
+		    	else {
+		    		st.add(new Item(textView.getText().toString()+ "[ ]"));
+			    	Toast.makeText(MainActivity.this,"Adding a item", Toast.LENGTH_SHORT).show();
+			    	//Clear the editText after adding
+			    	textView.getText().clear();
+
+		    	}
+				
+			}
+		});
         // Passing listView to ContextMenu for onCreateContextMenu
         registerForContextMenu(listView);
         
@@ -201,36 +246,43 @@ public class MainActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
         return super.onOptionsItemSelected(item);
     }
     
     // The below 3 functions go to different views when a button is pressed
     public void goToArchive(MenuItem menu) {
-    	Toast.makeText(this,"Go to archive", Toast.LENGTH_SHORT).show();
+    	//Toast.makeText(this,"Go to archive", Toast.LENGTH_SHORT).show();
     	Intent intent= new Intent(MainActivity.this, ArchiveListActivity.class);
     	startActivity(intent);
     }
     public void goToSummary(MenuItem menu) {
-    	Toast.makeText(this,"Go to summary", Toast.LENGTH_SHORT).show();
+    	//Toast.makeText(this,"Go to summary", Toast.LENGTH_SHORT).show();
     	Intent intent= new Intent(MainActivity.this,SummaryActivity.class);
     	startActivity(intent);
     }
     
     public void goToEmail(MenuItem menu) {
-    	Toast.makeText(this, "Go to email", Toast.LENGTH_SHORT).show();
+    	//Toast.makeText(this, "Go to email", Toast.LENGTH_SHORT).show();
     	Intent intent= new Intent(MainActivity.this,EmailActivity.class);
     	startActivity(intent);
     }
     
+    public void goToExit(MenuItem menu) {
+    	//Exit the app
+    	finish();
+    }
+    
+    
+    
     
     //Used to add an item to the TODO list view
-    public void AddItemAction(View v) {
-    	Toast.makeText(this,"Adding a item", Toast.LENGTH_SHORT).show();
-    	ItemListController st= new ItemListController();
-    	EditText textView= (EditText) findViewById(R.id.AddItemTextBox);
-    	st.add(new Item(textView.getText().toString()+ "[ ]"));
-    }
+//    public void AddItemAction(View v) {
+//    	Toast.makeText(this,"Adding a item", Toast.LENGTH_SHORT).show();
+//    	ItemListController st= new ItemListController();
+//    	EditText textView= (EditText) findViewById(R.id.AddItemTextBox);
+//    	st.add(new Item(textView.getText().toString()+ "[ ]"));
+//    }
 }

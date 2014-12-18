@@ -20,17 +20,40 @@
         android:layout_above="@+id/EmailSelectedTodoButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/SomeTodoEmailTextView" >
+        android:layout_below="@+id/SomeTodoEmailTextView"
+        android:choiceMode="multipleChoice" >
+        
 
     </ListView>
 
+        <View
+        android:id="@+id/buttonView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/EmailSomeTodoListView"
+        android:layout_marginBottom="22dp" />
+        
     <Button
         android:id="@+id/EmailSelectedTodoButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/buttonView"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignRight="@+id/buttonView"
         android:text="Email" />
+
+    <Button
+        android:id="@+id/SelectAllButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignRight="@id/buttonView"
+        android:layout_toRightOf="@+id/buttonView"
+        android:text="Select/unselect all" 
+        android:textSize="15dp"/>
 
 </RelativeLayout>

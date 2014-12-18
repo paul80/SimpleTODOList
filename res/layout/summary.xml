@@ -31,7 +31,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/TodoCheckedTextView"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="25dp"
         android:text="To do items unchecked"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -42,7 +42,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/TodoUncheckedTextView"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="25dp"
         android:text="Archived Items"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -54,6 +54,8 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/ArchivedCheckedTextView"
         android:text="Archived items unchecked"
+        android:layout_marginTop="25dp"
+        
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -64,6 +66,8 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/ArchivedItemsTextView"
         android:text="Archived items checked"
+        android:layout_marginTop="25dp"
+        
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
