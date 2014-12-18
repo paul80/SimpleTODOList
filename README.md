@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Assignment 1- A TODO list
 
 An android app to put TODO items in, and the following features include: emailing TODO items, checking off items, archiving/unarchiving items
@@ -13,3 +14,7 @@ http://www.compiletimeerror.com/2013/07/send-email-in-android-example.html#.VCT8
 http://android4beginners.com/2013/06/lesson-1-3-how-to-modify-textview-in-java-code-findviewbyid-settext-and-gettext-methods/
 
 
+=======
+SimpleTODOList
+==============
+>>>>>>> 889171ff8c574ee8d075c0cc65f0b6628f7c50bb
